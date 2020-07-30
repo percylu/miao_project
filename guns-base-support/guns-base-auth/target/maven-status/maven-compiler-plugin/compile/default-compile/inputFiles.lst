@@ -1,0 +1,12 @@
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/annotion/Permission.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/service/AuthService.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/exception/enums/AuthExceptionEnum.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/context/LoginContext.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/jwt/payload/JwtPayLoad.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/exception/AuthException.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/context/LoginContextHolder.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/aop/PermissionAop.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/jwt/JwtTokenUtil.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/model/LoginUser.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/model/MyRole.java
+/Users/percylu/miao_project/guns-base-support/guns-base-auth/src/main/java/cn/stylefeng/guns/base/auth/exception/PermissionException.java

@@ -1,0 +1,7 @@
+/Users/percylu/miao_project/guns-base-support/guns-oauth2/src/main/java/cn/stylefeng/guns/oauth2/mapper/OauthUserInfoMapper.java
+/Users/percylu/miao_project/guns-base-support/guns-oauth2/src/main/java/cn/stylefeng/guns/oauth2/service/impl/OauthUserInfoServiceImpl.java
+/Users/percylu/miao_project/guns-base-support/guns-oauth2/src/main/java/cn/stylefeng/guns/oauth2/factory/OAuthUserInfoFactory.java
+/Users/percylu/miao_project/guns-base-support/guns-oauth2/src/main/java/cn/stylefeng/guns/oauth2/controller/OAuthController.java
+/Users/percylu/miao_project/guns-base-support/guns-oauth2/src/main/java/cn/stylefeng/guns/oauth2/factory/OAuthRequestFactory.java
+/Users/percylu/miao_project/guns-base-support/guns-oauth2/src/main/java/cn/stylefeng/guns/oauth2/service/LoginService.java
+/Users/percylu/miao_project/guns-base-support/guns-oauth2/src/main/java/cn/stylefeng/guns/oauth2/service/impl/DefaultLoginService.java
