@@ -1,4 +1,0 @@
-{"id":"127.0.0.1.tm159599413611600001","wasCommitted":true,"participants":[{"uri":"127.0.0.1.tm1","state":"COMMITTING","expires":1595994146103,"resourceName":"master"}]}
-{"id":"127.0.0.1.tm159599413611600001","wasCommitted":true,"participants":[{"uri":"127.0.0.1.tm1","state":"TERMINATED","expires":1595994146126,"resourceName":"master"}]}
-{"id":"127.0.0.1.tm159599415279100002","wasCommitted":true,"participants":[{"uri":"127.0.0.1.tm2","state":"COMMITTING","expires":1595994162803,"resourceName":"master"}]}
-{"id":"127.0.0.1.tm159599415279100002","wasCommitted":true,"participants":[{"uri":"127.0.0.1.tm2","state":"TERMINATED","expires":1595994162978,"resourceName":"master"}]}
