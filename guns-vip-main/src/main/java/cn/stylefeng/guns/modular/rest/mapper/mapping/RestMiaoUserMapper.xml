@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.rest.mapper.MiaoUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.rest.entity.RestMiaoUser">
+        <id column="user_id" property="userId" />
+        <result column="avatar" property="avatar" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="salt" property="salt" />
+        <result column="name" property="name" />
+        <result column="sex" property="sex" />
+        <result column="status" property="status" />
+        <result column="qq" property="qq" />
+        <result column="weixin" property="weixin" />
+        <result column="weibo" property="weibo" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id AS "userId", avatar AS "avatar", account AS "account", password AS "password", salt AS "salt", name AS "name", sex AS "sex", status AS "status", qq AS "qq", weixin AS "weixin", weibo AS "weibo", create_time AS "createTime", update_time AS "updateTime"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.MiaoUserResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoUserParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoUserParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.rest.model.result.MiaoUserResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoUserParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoUserParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where 1 = 1
+    </select>
+
+</mapper>

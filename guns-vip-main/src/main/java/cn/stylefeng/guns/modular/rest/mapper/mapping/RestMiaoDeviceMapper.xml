@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.rest.mapper.MiaoDeviceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.rest.entity.RestMiaoDevice">
+        <id column="device_id" property="deviceId" />
+        <result column="user_id" property="userId" />
+        <result column="device_sn" property="deviceSn" />
+        <result column="device_type" property="deviceType" />
+        <result column="status" property="status" />
+        <result column="rubbish" property="rubbish" />
+        <result column="litter" property="litter" />
+        <result column="tims" property="tims" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        device_id AS "deviceId", user_id AS "userId", device_sn AS "deviceSn", device_type AS "deviceType", status AS "status", rubbish AS "rubbish", litter AS "litter", tims AS "tims", create_time AS "createTime", update_time AS "updateTime"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.MiaoDeviceResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoDeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_device where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoDeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_device where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.rest.model.result.MiaoDeviceResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoDeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_device where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.MiaoDeviceParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_device where 1 = 1
+    </select>
+
+</mapper>
