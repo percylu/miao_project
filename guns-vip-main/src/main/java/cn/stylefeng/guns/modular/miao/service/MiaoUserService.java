@@ -66,4 +66,6 @@ public interface MiaoUserService extends IService<MiaoUser> {
      */
      LayuiPageInfo findPageBySpec(MiaoUserParam param);
 
+     String updateAvatar(String fileId);
+
 }

@@ -3,6 +3,7 @@ package cn.stylefeng.guns.modular.miao.mapper;
 import cn.stylefeng.guns.modular.miao.entity.MiaoUser;
 import cn.stylefeng.guns.modular.miao.model.params.MiaoUserParam;
 import cn.stylefeng.guns.modular.miao.model.result.MiaoUserResult;
+import cn.stylefeng.guns.modular.rest.entity.RestMiaoUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -52,5 +53,8 @@ public interface MiaoUserMapper extends BaseMapper<MiaoUser> {
      * @Date 2020-07-31
      */
     Page<Map<String, Object>> customPageMapList(@Param("page") Page page, @Param("paramCondition") MiaoUserParam paramCondition);
-
+    /**
+     * 通过账号获取用户
+     */
+    MiaoUser getByAccount(@Param("account") String account);
 }

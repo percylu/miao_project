@@ -24,9 +24,40 @@
         </div>
     </div>
 </div>
-
+<style>
+    .layui-table-cell{
+        height: inherit;
+    }
+    img{
+        position: relative;
+        width: 50px;
+        height: 50px;
+    }
+</style>
 <script type="text/html" id="tableBar">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+</script>
+
+<script type="text/html" id="avatarImgTpl">
+    <div>
+        <img src="{{d.avatar}}" />
+    </div>
+</script>
+
+<script type="text/html" id="sexTpl">
+    {{d.sex==0 ?
+    '<span class="layui-badge layui-bg-blue">男</span>'
+    :
+    '<span class="layui-badge layui-bg-green">女</span>'
+    }}
+</script>
+
+<script type="text/html" id="statusTpl">
+    {{d.status=='ENABLE' ?
+    '<span class="layui-badge layui-bg-blue">正常</span>'
+    :
+    '<span class="layui-badge layui-bg-green">锁定</span>'
+    }}
 </script>
 @}

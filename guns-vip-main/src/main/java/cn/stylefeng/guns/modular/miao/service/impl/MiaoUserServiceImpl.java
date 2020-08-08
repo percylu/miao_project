@@ -7,10 +7,13 @@ import cn.stylefeng.guns.modular.miao.mapper.MiaoUserMapper;
 import cn.stylefeng.guns.modular.miao.model.params.MiaoUserParam;
 import cn.stylefeng.guns.modular.miao.model.result.MiaoUserResult;
 import  cn.stylefeng.guns.modular.miao.service.MiaoUserService;
+import cn.stylefeng.guns.sys.modular.system.entity.FileInfo;
+import cn.stylefeng.guns.sys.modular.system.service.FileInfoService;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -26,10 +29,13 @@ import java.util.List;
  */
 @Service
 public class MiaoUserServiceImpl extends ServiceImpl<MiaoUserMapper, MiaoUser> implements MiaoUserService {
+    @Autowired
+    private FileInfoService fileInfoService;
 
     @Override
     public void add(MiaoUserParam param){
         MiaoUser entity = getEntity(param);
+
         this.save(entity);
     }
 
@@ -61,6 +67,14 @@ public class MiaoUserServiceImpl extends ServiceImpl<MiaoUserMapper, MiaoUser> i
         Page pageContext = getPageContext();
         IPage page = this.baseMapper.customPageList(pageContext, param);
         return LayuiPageFactory.createPageInfo(page);
+    }
+
+    @Override
+    public String updateAvatar(String fileId) {
+        FileInfo file = fileInfoService.getById(fileId);
+        String fileName=file.getFinalName();
+        String filePath = "/image/"+fileName;
+        return filePath;
     }
 
     private Serializable getKey(MiaoUserParam param){

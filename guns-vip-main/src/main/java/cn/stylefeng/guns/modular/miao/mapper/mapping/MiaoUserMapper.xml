@@ -48,5 +48,9 @@
         <include refid="Base_Column_List"/>
         from miao_user where 1 = 1
     </select>
-
+    <select id="getByAccount" resultType="cn.stylefeng.guns.modular.miao.entity.MiaoUser">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where account = #{account}
+    </select>
 </mapper>

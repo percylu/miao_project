@@ -7,8 +7,7 @@ import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import ${package.EntitySpecParams}.${entity}Param;
 import ${package.EntitySpecResult}.${entity}Result;
 import ${package.Service}.${table.serviceName};
-import cn.stylefeng.roses.kernel.scanner.modular.annotation.PostResource;
-import cn.stylefeng.roses.kernel.scanner.modular.stereotype.ApiResource;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -20,7 +19,7 @@ import java.util.List;
  * @Date ${tool.currentTime()}
  */
 @RestController
-@ApiResource(name = "${tool.cleanWhite(table.comment)}管理", path = "/${tool.lowerFirst(entity)}")
+@RequestMapping("/${tool.lowerFirst(entity)}")
 public class ${entity}Controller {
 
     <% var lowerEntity = tool.lowerFirst(entity); %>
@@ -35,7 +34,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @PostResource(name = "添加", path = "/add")
+    @RequestMapping(value="/add")
     public ResponseData add(@RequestBody ${entity}Param param) {
         ${lowerEntityService}.add(param);
         return ResponseData.success();
@@ -47,7 +46,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @PostResource(name = "修改", path = "/update")
+    @RequestMapping(value="/update")
     public ResponseData update(@RequestBody ${entity}Param param) {
         ${lowerEntityService}.update(param);
         return ResponseData.success();
@@ -59,7 +58,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @PostResource(name = "删除", path = "/delete")
+    @RequestMapping(value="/delete")
     public ResponseData delete(@RequestBody ${entity}Param param) {
         ${lowerEntityService}.delete(param);
         return ResponseData.success();
@@ -71,7 +70,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @PostResource(name = "查询详情", path = "/queryDetail")
+    @RequestMapping(value="/queryDetail")
     public ResponseData queryDetail(@RequestBody ${entity}Param param) {
         ${entity}Result result = ${lowerEntityService}.findBySpec(param);
         return ResponseData.success(result);
@@ -83,7 +82,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @PostResource(name = "查询列表", path = "/queryList")
+    @RequestMapping(value="/queryList")
     public ResponseData queryList(@RequestBody ${entity}Param param) {
         List<${entity}Result> listBySpec = ${lowerEntityService}.findListBySpec(param);
         return ResponseData.success(listBySpec);
@@ -95,7 +94,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @PostResource(name = "分页查询列表", path = "/queryListPage")
+    @RequestMapping(value="/queryListPage")
     public ResponseData queryListPage(@RequestBody ${entity}Param param) {
         PageResult<${entity}Result> pageBySpec = ${lowerEntityService}.findPageBySpec(param);
         return ResponseData.success(pageBySpec);

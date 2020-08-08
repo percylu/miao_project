@@ -7,7 +7,7 @@ beetl:
 
 spring:
   profiles:
-    active: @spring.active@
+    active: '@spring.active@'
   mvc:
     view:
       prefix: /pages

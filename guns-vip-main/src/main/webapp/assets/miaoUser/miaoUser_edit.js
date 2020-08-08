@@ -24,6 +24,7 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
     var $ax = layui.ax;
     var form = layui.form;
     var admin = layui.admin;
+    var upload = layui.upload;
 
 
 
@@ -59,6 +60,7 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
     //获取详情信息，填充表单
     var ajax = new $ax(Feng.ctxPath + "/miaoUser/detail?userId=" + Feng.getUrlParam("userId"));
     var result = ajax.start();
+    $('#avatarPreview').attr('src',result.data.avatar);
     form.val('miaoUserForm', result.data);
 
     //表单提交事件
@@ -76,6 +78,29 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
         ajax.start();
 
         return false;
+    });
+    upload.render({
+        elem: '#avatarPreview'
+        , url: Feng.ctxPath + '/system/upload'
+        , before: function (obj) {
+            obj.preview(function (index, file, result) {
+                $('#avatarPreview').attr('src', result);
+            });
+        }
+        , done: function (res) {
+            var ajax = new $ax(Feng.ctxPath + "/miaoUser/updateAvatar", function (data) {
+                Feng.success(res.message);
+            }, function (data) {
+                Feng.error("修改失败!" + data.responseJSON.message + "!");
+            });
+            ajax.set("fileId", res.data.fileId);
+
+            var filePath=ajax.start();
+            $('#avatar').val(filePath.data.filePath);
+        }
+        , error: function () {
+            Feng.error("上传头像失败！");
+        }
     });
 
 });

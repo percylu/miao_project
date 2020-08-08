@@ -24,8 +24,7 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
     var $ax = layui.ax;
     var form = layui.form;
     var admin = layui.admin;
-
-
+    var upload = layui.upload;
 
 
 
@@ -72,6 +71,31 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
 
         return false;
     });
+
+    upload.render({
+        elem: '#ImgPreview'
+        , url: Feng.ctxPath + '/system/upload'
+        , before: function (obj) {
+            obj.preview(function (index, file, result) {
+                $('#avatarPreview').attr('src', result);
+            });
+        }
+        , done: function (res) {
+            var ajax = new $ax(Feng.ctxPath + "/miaoBanner/updateAvatar", function (data) {
+                Feng.success(res.message);
+            }, function (data) {
+                Feng.error("修改失败!" + data.responseJSON.message + "!");
+            });
+            ajax.set("fileId", res.data.fileId);
+
+            var filePath=ajax.start();
+            $('#avatar').val(filePath.data.filePath);
+        }
+        , error: function () {
+            Feng.error("上传头像失败！");
+        }
+    });
+
 
 
 });

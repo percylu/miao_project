@@ -14,10 +14,10 @@ import java.io.Serializable;
  * </p>
  *
  * @author percylu
- * @since 2020-08-02
+ * @since 2020-08-03
  */
 @TableName("miao_user")
-public class MiaoUser implements Serializable {
+public class RestMiaoUser implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -206,7 +206,7 @@ public class MiaoUser implements Serializable {
 
     @Override
     public String toString() {
-        return "MiaoUser{" +
+        return "User{" +
         "userId=" + userId +
         ", avatar=" + avatar +
         ", account=" + account +
