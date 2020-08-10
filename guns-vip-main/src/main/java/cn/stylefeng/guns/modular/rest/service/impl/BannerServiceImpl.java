@@ -63,6 +63,11 @@ public class BannerServiceImpl extends ServiceImpl<BannerMapper, Banner> impleme
         return new PageResult<>(page);
     }
 
+    @Override
+    public List<BannerResult> customerList() {
+        return this.baseMapper.customList();
+    }
+
     private Serializable getKey(BannerParam param){
         return param.getBannerId();
     }

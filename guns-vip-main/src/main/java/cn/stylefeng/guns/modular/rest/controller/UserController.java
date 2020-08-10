@@ -187,18 +187,6 @@ public class UserController {
         return ResponseData.success();
     }
 
-    /**
-     * 删除
-     *
-     * @author percylu
-     * @Date 2020-08-03
-     */
-    @RequestMapping(value="/delete")
-    @ApiOperation("删除")
-    public ResponseData delete(@RequestBody UserParam param) {
-        userService.delete(param);
-        return ResponseData.success();
-    }
 
     /**
      * 查询单条详情
@@ -221,7 +209,7 @@ public class UserController {
      * @Date 2020-08-03
      */
     @ApiOperation(value = "查询列表", response = UserResult.class)
-    @RequestMapping(value="/queryList")
+    @RequestMapping(value="/queryList",method = RequestMethod.POST)
     public ResponseData queryList(@RequestBody UserParam param) {
         List<UserResult> listBySpec = userService.findListBySpec(param);
         return ResponseData.success(listBySpec);
@@ -233,7 +221,7 @@ public class UserController {
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/queryListPage")
+    @RequestMapping(value="/queryListPage",method = RequestMethod.POST)
     @ApiOperation(value = "分页查询列表", response = UserResult.class)
     public ResponseData queryListPage(@RequestBody UserParam param) {
         PageResult<UserResult> pageBySpec = userService.findPageBySpec(param);

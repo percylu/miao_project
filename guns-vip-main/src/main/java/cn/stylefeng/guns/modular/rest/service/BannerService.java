@@ -66,4 +66,11 @@ public interface BannerService extends IService<Banner> {
      */
      PageResult<BannerResult> findPageBySpec(BannerParam param);
 
+    /**
+     * 查询列表
+     *
+     * @author percylu
+     * @Date 2020-08-08
+     */
+    List<BannerResult> customerList();
 }

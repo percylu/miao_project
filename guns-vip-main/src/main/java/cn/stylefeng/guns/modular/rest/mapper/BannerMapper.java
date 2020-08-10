@@ -27,7 +27,7 @@ public interface BannerMapper extends BaseMapper<Banner> {
      * @author percylu
      * @Date 2020-08-08
      */
-    List<BannerResult> customList(@Param("paramCondition") BannerParam paramCondition);
+    List<BannerResult> customList();
 
     /**
      * 获取map列表

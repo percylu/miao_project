@@ -82,8 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
+        web.ignoring()
                 .antMatchers(
                         HttpMethod.POST,
                         "/login",
@@ -100,7 +99,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         HttpMethod.GET,
                         "/assets/**",
                         "/favicon.ico",
-                        "/activiti-editor/**"
+                        "/activiti-editor/**",
+                        "/image/**"
                 );
 
     }

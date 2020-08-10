@@ -17,7 +17,8 @@
     </sql>
 
 
-    <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.BannerResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.BannerParam">
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.BannerResult">
         select
         <include refid="Base_Column_List"/>
         from miao_banner where 1 = 1

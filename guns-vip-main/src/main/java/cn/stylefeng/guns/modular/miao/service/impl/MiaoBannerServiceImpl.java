@@ -1,5 +1,6 @@
 package cn.stylefeng.guns.modular.miao.service.impl;
 
+import cn.hutool.core.date.DateTime;
 import cn.stylefeng.guns.base.pojo.page.LayuiPageFactory;
 import cn.stylefeng.guns.base.pojo.page.LayuiPageInfo;
 import cn.stylefeng.guns.modular.miao.entity.MiaoBanner;
@@ -34,6 +35,7 @@ public class MiaoBannerServiceImpl extends ServiceImpl<MiaoBannerMapper, MiaoBan
     @Override
     public void add(MiaoBannerParam param){
         MiaoBanner entity = getEntity(param);
+        entity.setCreatetime(DateTime.now());
         this.save(entity);
     }
 
@@ -47,6 +49,7 @@ public class MiaoBannerServiceImpl extends ServiceImpl<MiaoBannerMapper, MiaoBan
         MiaoBanner oldEntity = getOldEntity(param);
         MiaoBanner newEntity = getEntity(param);
         ToolUtil.copyProperties(newEntity, oldEntity);
+        newEntity.setUpdatetime(DateTime.now());
         this.updateById(newEntity);
     }
 
