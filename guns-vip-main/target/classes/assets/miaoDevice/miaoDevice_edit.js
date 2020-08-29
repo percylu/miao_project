@@ -48,7 +48,6 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
     var ajax = new $ax(Feng.ctxPath + "/miaoDevice/detail?deviceId=" + Feng.getUrlParam("deviceId"));
     var result = ajax.start();
     form.val('miaoDeviceForm', result.data);
-
     //表单提交事件
     form.on('submit(btnSubmit)', function (data) {
         var ajax = new $ax(Feng.ctxPath + "/miaoDevice/editItem", function (data) {
@@ -64,6 +63,31 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
         ajax.start();
 
         return false;
+    });
+
+
+    $.ajax({
+        url:Feng.ctxPath + "/miaoDeviceType/list",
+        type:'get',
+        dateType:'json',
+        success:function(datas){
+            var type = $('#deviceType');
+            var typelist=datas.data;
+            for(var i = 0; i < typelist.length; i++) {
+
+                if(typelist[i]['typeId']==result.data.deviceType){
+                    type.append(("<option selected value="+typelist[i]['typeId']+">"+typelist[i]['type']+"</option>"));
+                }else{
+                    type.append(("<option value="+typelist[i]['typeId']+">"+typelist[i]['type']+"</option>"));
+                }
+            }
+            //layui重新渲染
+            layui.use('form', function(){
+                var form = layui.form;//高版本建议把括号去掉，有的低版本，需要加()
+                form.render('select');
+                //form.render();
+            });
+        }
     });
 
 });

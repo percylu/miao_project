@@ -1,7 +1,13 @@
 package cn.stylefeng.guns.modular.rest.controller;
 
+import cn.stylefeng.guns.modular.rest.entity.Device;
+import cn.stylefeng.guns.modular.rest.entity.DeviceType;
+import cn.stylefeng.guns.modular.rest.service.DeviceTypeService;
+import cn.stylefeng.guns.sys.modular.rest.entity.RestDictType;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import cn.stylefeng.roses.kernel.model.page.PageResult;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
@@ -13,6 +19,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 设备管理控制器
@@ -27,17 +34,26 @@ public class DeviceController {
 
     @Autowired
     private DeviceService deviceService;
-
+    @Autowired
+    private DeviceTypeService deviceTypeService;
     /**
      * 新增
      *
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/add")
+    @RequestMapping(value="/add",method = RequestMethod.POST)
     @ApiOperation("新增")
     public ResponseData add(@RequestBody DeviceParam param) {
-        deviceService.add(param);
+        List<Device> device=deviceService.findbyDeviceSn(param.getDeviceSn());
+        if(device.size()==0){
+            List<DeviceType> deviceType=deviceTypeService.list();
+            if(deviceType.size()>0){
+                param.setDeviceType(deviceType.get(0).getTypeId());
+            }
+            param.setStatus("ENABLE");
+            deviceService.add(param);
+        }
         return ResponseData.success();
     }
 
@@ -87,9 +103,9 @@ public class DeviceController {
      * @Date 2020-08-03
      */
     @ApiOperation(value = "查询列表", response = DeviceResult.class)
-    @RequestMapping(value="/queryList")
+    @RequestMapping(value="/queryList",method = RequestMethod.POST)
     public ResponseData queryList(@RequestBody DeviceParam param) {
-        List<DeviceResult> listBySpec = deviceService.findListBySpec(param);
+        List<Map<String,Object>> listBySpec = deviceService.findListBySpec(param);
         return ResponseData.success(listBySpec);
     }
 

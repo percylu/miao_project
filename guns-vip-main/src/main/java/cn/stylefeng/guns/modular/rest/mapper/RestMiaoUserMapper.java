@@ -57,4 +57,15 @@ public interface RestMiaoUserMapper extends BaseMapper<RestMiaoUser> {
      */
     RestMiaoUser getByAccount(@Param("account") String account);
 
-}
+    /**
+     * 根据账号更新密码
+     */
+    void updateByAccount(@Param("paramCondition") UserParam paramCondition);
+
+    /**
+     * 修改手机号
+     */
+    void updateAccount(@Param("paramCondition") UserParam paramCondition);
+    }
+
+

@@ -21,7 +21,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {field: 'typeId', hide: true, title: '主键id'},
             {field: 'color', sort: true, title: '设备颜色'},
             {field: 'type', sort: true, title: '设备型号'},
-            {field: 'imgurl', sort: true, title: '设备图片'},
+            {field: 'imgurl', sort: true, title: '设备图片',templet:"#imgUrlTpl",},
             {field: 'createTime', sort: true, title: '创建时间'},
             {field: 'updateTime', sort: true, title: '更新时间'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}

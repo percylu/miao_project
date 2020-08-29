@@ -66,4 +66,13 @@ public interface MiaoDeviceTypeService extends IService<MiaoDeviceType> {
      */
      LayuiPageInfo findPageBySpec(MiaoDeviceTypeParam param);
 
+    /**
+     * 上传设备图片
+     *
+     * @author 卢水柏
+     * @Date 2020-07-31
+     */
+     String updatePic(String fileId);
+
+
 }

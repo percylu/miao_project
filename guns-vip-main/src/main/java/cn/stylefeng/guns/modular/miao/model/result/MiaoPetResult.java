@@ -1,6 +1,9 @@
 package cn.stylefeng.guns.modular.miao.model.result;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -52,6 +55,7 @@ public class MiaoPetResult implements Serializable {
     /**
      * 生日
      */
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     /**

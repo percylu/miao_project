@@ -121,6 +121,7 @@ public class MiaoDeviceController extends BaseController {
     @ResponseBody
     @RequestMapping("/list")
     public LayuiPageInfo list(MiaoDeviceParam miaoDeviceParam) {
+
         return this.miaoDeviceService.findPageBySpec(miaoDeviceParam);
     }
 

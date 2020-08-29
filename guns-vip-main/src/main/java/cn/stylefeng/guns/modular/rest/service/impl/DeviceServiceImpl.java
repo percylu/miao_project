@@ -14,7 +14,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -52,8 +54,10 @@ public class DeviceServiceImpl extends ServiceImpl<DeviceMapper, Device> impleme
     }
 
     @Override
-    public List<DeviceResult> findListBySpec(DeviceParam param){
-        return null;
+    public List<Map<String,Object>> findListBySpec(DeviceParam param){
+        param.setStatus("ENABLE");
+        List<Map<String,Object>> list=this.baseMapper.customMapList(param);
+        return list;
     }
 
     @Override
@@ -61,6 +65,13 @@ public class DeviceServiceImpl extends ServiceImpl<DeviceMapper, Device> impleme
         Page pageContext = getPageContext();
         IPage<DeviceResult> page = this.baseMapper.customPageList(pageContext, param);
         return new PageResult<>(page);
+    }
+
+    @Override
+    public List<Device> findbyDeviceSn(String deviceSn) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("device_sn",deviceSn);
+        return this.baseMapper.selectByMap(map);
     }
 
     private Serializable getKey(DeviceParam param){

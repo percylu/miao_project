@@ -52,9 +52,6 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
 
 
 
-
-
-
     //表单提交事件
     form.on('submit(btnSubmit)', function (data) {
         var ajax = new $ax(Feng.ctxPath + "/miaoUser/addItem", function (data) {

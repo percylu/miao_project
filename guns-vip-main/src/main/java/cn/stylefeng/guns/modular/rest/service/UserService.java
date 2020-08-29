@@ -66,6 +66,19 @@ public interface UserService extends IService<RestMiaoUser> {
      */
      PageResult<UserResult> findPageBySpec(UserParam param);
 
+    /**
+     * 根据账号更新密码
+     *
+     * @author percylu
+     * @Date 2020-08-17
+     */
+    void updateByAccount(UserParam param);
 
-
+    /**
+     * 更改账号
+     *
+     * @author percylu
+     * @Date 2020-08-17
+     */
+    void updateAccount(UserParam param);
 }

@@ -7,10 +7,13 @@ import cn.stylefeng.guns.modular.miao.mapper.MiaoDeviceTypeMapper;
 import cn.stylefeng.guns.modular.miao.model.params.MiaoDeviceTypeParam;
 import cn.stylefeng.guns.modular.miao.model.result.MiaoDeviceTypeResult;
 import  cn.stylefeng.guns.modular.miao.service.MiaoDeviceTypeService;
+import cn.stylefeng.guns.sys.modular.system.entity.FileInfo;
+import cn.stylefeng.guns.sys.modular.system.service.FileInfoService;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -26,7 +29,8 @@ import java.util.List;
  */
 @Service
 public class MiaoDeviceTypeServiceImpl extends ServiceImpl<MiaoDeviceTypeMapper, MiaoDeviceType> implements MiaoDeviceTypeService {
-
+    @Autowired
+    private FileInfoService fileInfoService;
     @Override
     public void add(MiaoDeviceTypeParam param){
         MiaoDeviceType entity = getEntity(param);
@@ -79,6 +83,14 @@ public class MiaoDeviceTypeServiceImpl extends ServiceImpl<MiaoDeviceTypeMapper,
         MiaoDeviceType entity = new MiaoDeviceType();
         ToolUtil.copyProperties(param, entity);
         return entity;
+    }
+
+    @Override
+    public String updatePic(String fileId) {
+        FileInfo file = fileInfoService.getById(fileId);
+        String fileName=file.getFinalName();
+        String filePath = "/image/"+fileName;
+        return filePath;
     }
 
 }

@@ -17,6 +17,7 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
     var $ax = layui.ax;
     var form = layui.form;
     var admin = layui.admin;
+    var upload = layui.upload;
 
 
 
@@ -31,6 +32,7 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
     //获取详情信息，填充表单
     var ajax = new $ax(Feng.ctxPath + "/miaoDeviceType/detail?typeId=" + Feng.getUrlParam("typeId"));
     var result = ajax.start();
+    $('#picPreview').attr('src',result.data.imgurl);
     form.val('miaoDeviceTypeForm', result.data);
 
     //表单提交事件
@@ -49,5 +51,27 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
 
         return false;
     });
+    upload.render({
+        elem: '#picPreview'
+        , url: Feng.ctxPath + '/system/upload'
+        , before: function (obj) {
+            obj.preview(function (index, file, result) {
+                $('#picPreview').attr('src', result);
+            });
+        }
+        , done: function (res) {
+            var ajax = new $ax(Feng.ctxPath + "/miaoDeviceType/updatePic", function (data) {
+                Feng.success(res.message);
+            }, function (data) {
+                Feng.error("修改失败!" + data.responseJSON.message + "!");
+            });
+            ajax.set("fileId", res.data.fileId);
 
+            var filePath=ajax.start();
+            $('#imgurl').val(filePath.data.filePath);
+        }
+        , error: function () {
+            Feng.error("上传头像失败！");
+        }
+    });
 });

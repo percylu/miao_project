@@ -34,7 +34,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @RequestMapping(value="/add")
+    @RequestMapping(value="/add",method = RequestMethod.POST)
     public ResponseData add(@RequestBody ${entity}Param param) {
         ${lowerEntityService}.add(param);
         return ResponseData.success();
@@ -46,7 +46,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @RequestMapping(value="/update")
+    @RequestMapping(value="/update",method = RequestMethod.POST)
     public ResponseData update(@RequestBody ${entity}Param param) {
         ${lowerEntityService}.update(param);
         return ResponseData.success();
@@ -58,7 +58,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @RequestMapping(value="/delete")
+    @RequestMapping(value="/delete",method = RequestMethod.POST)
     public ResponseData delete(@RequestBody ${entity}Param param) {
         ${lowerEntityService}.delete(param);
         return ResponseData.success();
@@ -70,7 +70,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @RequestMapping(value="/queryDetail")
+    @RequestMapping(value="/queryDetail",method = RequestMethod.POST)
     public ResponseData queryDetail(@RequestBody ${entity}Param param) {
         ${entity}Result result = ${lowerEntityService}.findBySpec(param);
         return ResponseData.success(result);
@@ -82,7 +82,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @RequestMapping(value="/queryList")
+    @RequestMapping(value="/queryList",method = RequestMethod.POST)
     public ResponseData queryList(@RequestBody ${entity}Param param) {
         List<${entity}Result> listBySpec = ${lowerEntityService}.findListBySpec(param);
         return ResponseData.success(listBySpec);
@@ -94,7 +94,7 @@ public class ${entity}Controller {
      * @author ${author}
      * @Date ${date}
      */
-    @RequestMapping(value="/queryListPage")
+    @RequestMapping(value="/queryListPage",method = RequestMethod.POST)
     public ResponseData queryListPage(@RequestBody ${entity}Param param) {
         PageResult<${entity}Result> pageBySpec = ${lowerEntityService}.findPageBySpec(param);
         return ResponseData.success(pageBySpec);

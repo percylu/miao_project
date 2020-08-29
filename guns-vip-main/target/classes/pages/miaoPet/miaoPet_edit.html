@@ -9,12 +9,6 @@
                     <input name="petId" type="hidden"/>
 
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">所属用户<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input id="userId" name="userId" placeholder="请输入所属用户" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
-                    </div>
-                    <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">名字<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
                             <input id="name" name="name" placeholder="请输入名字" type="text" class="layui-input" lay-verify="required" required/>
@@ -23,37 +17,46 @@
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">品种<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input id="type" name="type" placeholder="请输入品种" type="text" class="layui-input" lay-verify="required" required/>
+                            <select name="type"  id="type" lay-filter="type">
+                                <option value="">下拉多选框</option>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">性别<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input id="sexy" name="sexy" placeholder="请输入性别" type="text" class="layui-input" lay-verify="required" required/>
+                            <select name="sexy" lay-filter="sexy">
+                                <option value="">下拉单选框</option>
+                                <option value="0">男孩</option>
+                                <option value="1">女孩</option>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">重量<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">重量</label>
                         <div class="layui-input-block">
-                            <input id="weight" name="weight" placeholder="请输入重量" type="text" class="layui-input" lay-verify="required" required/>
+                            <input id="weight" name="weight" placeholder="请输入重量" type="text" class="layui-input" />
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">生日<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">生日</label>
                         <div class="layui-input-block">
-                            <input id="birthday" name="birthday" placeholder="请输入生日" type="text" class="layui-input" lay-verify="required" required/>
+                            <input id="birthday" name="birthday" placeholder="请输入生日" type="text" class="layui-input date-icon" />
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">RFID<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">RFID</label>
                         <div class="layui-input-block">
-                            <input id="rdid" name="rdid" placeholder="请输入RFID" type="text" class="layui-input" lay-verify="required" required/>
+                            <input id="rdid" name="rdid" placeholder="请输入RFID" type="text" class="layui-input" />
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">图片<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">图片</label>
                         <div class="layui-input-block">
-                            <input id="imgurls" name="imgurls" placeholder="请输入图片" type="text" class="layui-input" lay-verify="required" required/>
+                            <input id="imgurls" hidden name="imgurls"  placeholder="请输入头像" type="text" />
+                            <img id="img1" style="cursor:pointer" seq="0">
+                            <img id="img2" style="cursor:pointer" seq="1">
+                            <img id="img3" style="cursor:pointer" seq="2">
                         </div>
                     </div>
                 </div>
@@ -66,5 +69,11 @@
     </div>
 
 </form>
-
+<style>
+    img{
+        position: relative;
+        width: 100px;
+        height: 100px;
+    }
+</style>
 @}

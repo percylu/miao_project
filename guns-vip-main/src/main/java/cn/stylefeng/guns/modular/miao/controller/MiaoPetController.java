@@ -1,15 +1,23 @@
 package cn.stylefeng.guns.modular.miao.controller;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.date.DateUtil;
 import cn.stylefeng.guns.base.pojo.page.LayuiPageInfo;
 import cn.stylefeng.guns.modular.miao.entity.MiaoPet;
 import cn.stylefeng.guns.modular.miao.model.params.MiaoPetParam;
 import cn.stylefeng.guns.modular.miao.service.MiaoPetService;
 import cn.stylefeng.roses.core.base.controller.BaseController;
+import cn.stylefeng.roses.core.util.ToolUtil;
+import cn.stylefeng.roses.kernel.model.exception.RequestEmptyException;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -109,7 +117,14 @@ public class MiaoPetController extends BaseController {
     @ResponseBody
     public ResponseData detail(MiaoPetParam miaoPetParam) {
         MiaoPet detail = this.miaoPetService.getById(miaoPetParam.getPetId());
-        return ResponseData.success(detail);
+        Map<String, Object> map = BeanUtil.beanToMap(detail);
+        map.put("birthday", DateUtil.formatDate(detail.getBirthday()));
+
+
+//        SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd" );
+//
+//        detail.setBirthday(sdf.format(detail.getBirthday()));
+        return ResponseData.success(map);
     }
 
     /**
@@ -124,6 +139,17 @@ public class MiaoPetController extends BaseController {
         return this.miaoPetService.findPageBySpec(miaoPetParam);
     }
 
+    @RequestMapping("/updatePic")
+    @ResponseBody
+    public ResponseData updatePic(@RequestParam("fileId") String fileId){
+        if (ToolUtil.isEmpty(fileId)){
+            throw new RequestEmptyException("请求图片为空");
+        }
+        String filePath=miaoPetService.updatePic(fileId);
+        Map<String,String> map=new HashMap<>();
+        map.put("filePath",filePath);
+        return ResponseData.success(0, "上传成功", map);
+    }
 }
 
 

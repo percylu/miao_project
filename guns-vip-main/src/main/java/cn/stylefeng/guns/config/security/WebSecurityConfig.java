@@ -89,7 +89,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/user/login",
                         "/user/add",
                         "/user/verifyCode",
-                        "/user/codeVerify"
+                        "/user/codeVerify",
+                        "/commonSetting/queryDetail",
+                        "/user/getVerifyCode",
+                        "/user/resetPassword"
                 )
 
                 // 静态资源放开过滤
@@ -100,7 +103,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/assets/**",
                         "/favicon.ico",
                         "/activiti-editor/**",
-                        "/image/**"
+                        "/image/**",
+                        "/ueditor/**"
                 );
 
     }

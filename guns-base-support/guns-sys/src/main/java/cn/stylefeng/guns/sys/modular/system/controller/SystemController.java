@@ -301,4 +301,24 @@ public class SystemController extends BaseController {
     }
 
 
+    /**
+     * layui上传组件 通用文件上传接口
+     *
+     * @author fengshuonan
+     * @Date 2019-2-23 10:48:29
+     */
+    @RequestMapping(method = RequestMethod.POST, path = "/uploads")
+    @ResponseBody
+    public ResponseData layuiUploads(@RequestPart("file") MultipartFile file) {
+
+        UploadResult uploadResult = this.fileInfoService.uploadFile(file);
+        String saveFile = uploadResult.getFileSavePath();
+
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("file", saveFile);
+
+        return ResponseData.success(200, "上传成功", uploadResult);
+    }
+
+
 }

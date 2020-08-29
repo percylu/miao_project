@@ -7,6 +7,7 @@ import cn.stylefeng.guns.modular.miao.mapper.MiaoDeviceMapper;
 import cn.stylefeng.guns.modular.miao.model.params.MiaoDeviceParam;
 import cn.stylefeng.guns.modular.miao.model.result.MiaoDeviceResult;
 import  cn.stylefeng.guns.modular.miao.service.MiaoDeviceService;
+import cn.stylefeng.guns.modular.miao.wrapper.DeviceWrapper;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -59,8 +61,10 @@ public class MiaoDeviceServiceImpl extends ServiceImpl<MiaoDeviceMapper, MiaoDev
     @Override
     public LayuiPageInfo findPageBySpec(MiaoDeviceParam param){
         Page pageContext = getPageContext();
-        IPage page = this.baseMapper.customPageList(pageContext, param);
-        return LayuiPageFactory.createPageInfo(page);
+        Page<Map<String, Object>> page = this.baseMapper.customPageMapList(pageContext, param);
+        Page wrap = new DeviceWrapper(page).wrap();
+        return LayuiPageFactory.createPageInfo(wrap);
+
     }
 
     private Serializable getKey(MiaoDeviceParam param){

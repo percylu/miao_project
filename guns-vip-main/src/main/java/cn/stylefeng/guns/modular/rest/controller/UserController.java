@@ -5,6 +5,7 @@ import cn.javaer.aliyun.sms.SmsTemplate;
 import cn.stylefeng.guns.core.auth.service.MiaoAuthService;
 import cn.stylefeng.guns.modular.rest.entity.RestMiaoUser;
 import cn.stylefeng.guns.modular.rest.factory.MiaoUserFactory;
+import cn.stylefeng.guns.modular.rest.mapper.PetMapper;
 import cn.stylefeng.guns.modular.rest.mapper.RestMiaoUserMapper;
 import cn.stylefeng.guns.sys.core.auth.util.StaticUtil;
 import cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum;
@@ -12,12 +13,11 @@ import cn.stylefeng.guns.sys.core.util.SaltUtil;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import cn.stylefeng.roses.kernel.model.exception.RequestEmptyException;
 import cn.stylefeng.roses.kernel.model.exception.ServiceException;
+import cn.stylefeng.roses.kernel.model.response.ErrorResponseData;
 import cn.stylefeng.roses.kernel.model.response.SuccessResponseData;
-import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 import cn.stylefeng.roses.kernel.model.page.PageResult;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
@@ -45,8 +45,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
+    @Autowired(required = false)
     private RestMiaoUserMapper userMapper;
+
 
     @Autowired
     private SmsClient smsClient;
@@ -150,7 +151,102 @@ public class UserController {
         smsClient.send(smsTemplate);
         return new SuccessResponseData();
     }
+    /**
+     *   重置密码
+     *
+     * @author fengshuonan
+     * @Date 2018/12/23 5:42 PM
+     */
+    @RequestMapping(value = "/getVerifyCode", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation("验证码")
+    public ResponseData getVerifyCode(@RequestParam("username") String username,HttpSession httpSession) {
+        String verifyCode = String
+                .valueOf(new Random().nextInt(899999) + 100000);//生成短信验证码
+        RestMiaoUser user=userMapper.getByAccount(username);
+        if(user ==null){
+            return ResponseData.error("账号不存在！");
+        }
+        template.boundValueOps("Reset"+username).set(verifyCode);
+        List<String> phones= new ArrayList();
+        phones.add(username);
+        SmsTemplate smsTemplate = SmsTemplate.builder()
+                .templateCode(StaticUtil.registerTemplates)
+                .addTemplateParam("code", verifyCode)
+                .signName("喵小小科技")
+                .phoneNumbers(phones)
+                .build();
+        try{
+            smsClient.send(smsTemplate);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            return new ErrorResponseData("获取验证码太频繁，请稍后再试");
+        }
+        return new SuccessResponseData();
+    }
 
+    /**
+     * 修改密码
+     *
+     * @author fengshuonan
+     * @Date 2018/12/23 5:42 PM
+     */
+    @RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation("重置密码")
+    public ResponseData resetPassword(@RequestParam("username") String username,@RequestParam("code") String code,
+                                      @RequestParam("password") String password,HttpSession httpSession) {
+        RestMiaoUser user=userMapper.getByAccount(username);
+        if(user ==null){
+            return ResponseData.error("账号不存在！");
+        }
+        String jcode = (String) template.boundValueOps("Reset"+username).get();
+        if(jcode==null){
+            return ResponseData.error("手机号码错误！");
+        }
+        if(!jcode.contentEquals(code)){
+            return ResponseData.error("验证码错误，请重试！");
+        }
+        String salt = SaltUtil.getRandomSalt();
+        String pwd = SaltUtil.md5Encrypt(password, salt);
+        UserParam userParam=new UserParam();
+        userParam.setAccount(username);
+        userParam.setPassword(pwd);
+        userParam.setSalt(salt);
+        userService.updateByAccount(userParam);
+        return new SuccessResponseData();
+    }
+
+    /**
+     * 修改密码
+     *
+     * @author fengshuonan
+     * @Date 2018/12/23 5:42 PM
+     */
+    @RequestMapping(value = "/changeAccount", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation("修改手机号")
+    public ResponseData changeAccount(@RequestParam("userId") String userId,
+                                      @RequestParam("username") String username,
+                                      @RequestParam("code") String code,
+                                      HttpSession httpSession) {
+        RestMiaoUser user=userMapper.getByAccount(username);
+        if(user !=null){
+            return ResponseData.error("手机号已经被注册！");
+        }
+        String jcode = (String) template.boundValueOps("Register"+username).get();
+        if(jcode==null){
+            return ResponseData.error("手机号码错误！");
+        }
+        if(!jcode.contentEquals(code)){
+            return ResponseData.error("验证码错误，请重试！");
+        }
+        UserParam param = new UserParam();
+        param.setUserId(Long.parseLong((userId)));
+        param.setAccount(username);
+        userService.updateAccount(param);
+        return new SuccessResponseData();
+    }
     /**
      * 点击登录执行的动作
      *
@@ -162,10 +258,33 @@ public class UserController {
     @ApiOperation("注册验验证")
     public ResponseData verifyCode(@RequestParam("username") String username,@RequestParam("code") String code,HttpSession httpSession) {
         RestMiaoUser user=userMapper.getByAccount(username);
-        if(user !=null){
-            throw new ServiceException(BizExceptionEnum.USER_ALREADY_REG);
-        }
+//        if(user !=null){
+//            throw new ServiceException(BizExceptionEnum.USER_ALREADY_REG);
+//        }
         String jcode = (String) template.boundValueOps("Register"+username).get();
+        if(jcode==null){
+            return ResponseData.error("手机号码错误！");
+        }
+        if(!jcode.contentEquals(code)){
+            return ResponseData.error("验证码错误，请重试！");
+        }
+        return new SuccessResponseData();
+    }
+    /**
+     * 点击登录执行的动作
+     *
+     * @author fengshuonan
+     * @Date 2018/12/23 5:42 PM
+     */
+    @RequestMapping(value = "/codeVerifyChange", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation("注册验验证")
+    public ResponseData codeVerifyChange(@RequestParam("username") String username,@RequestParam("code") String code,HttpSession httpSession) {
+        RestMiaoUser user=userMapper.getByAccount(username);
+//        if(user !=null){
+//            throw new ServiceException(BizExceptionEnum.USER_ALREADY_REG);
+//        }
+        String jcode = (String) template.boundValueOps("Reset"+username).get();
         if(jcode==null){
             return ResponseData.error("手机号码错误！");
         }
@@ -180,7 +299,7 @@ public class UserController {
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/update")
+    @RequestMapping(value="/update",method = RequestMethod.POST)
     @ApiOperation("修改")
     public ResponseData update(@RequestBody UserParam param) {
         userService.update(param);

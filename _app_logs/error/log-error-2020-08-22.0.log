@@ -1,0 +1,21 @@
+2020-08-22 09:12:28.233 ERROR 17010 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->wltyp90ufmat8938483g1p4sj0yon7d8，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:27:58.025 ERROR 18549 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->tunuryffk0ppw036hlebqmj06jv3ojl3，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:29:56.734 ERROR 18761 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->t3lzr0x9ka4ob2fd0whr1adai9789u1q，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:34:33.656 ERROR 18761 --- [http-nio-8002-exec-7] c.s.g.s.c.e.aop.GlobalExceptionHandler   : 业务异常:
+
+cn.stylefeng.roses.kernel.model.exception.RequestEmptyException: 账号或密码为空！
+
+2020-08-22 09:35:09.656 ERROR 19254 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->8p6lo2rawpyi33bqyvsgm5ifn0cje6rb，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:37:15.341 ERROR 19467 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->a7cuk9k67plikgw2dzdoxzpyiomgovj8，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:42:48.365 ERROR 19926 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->ouy1srpb2vjz83gfwledar9ec7b4mxp4，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:49:36.635 ERROR 20659 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->2osma44b790mt36ewlb6xccrz4cx8war，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:49:36.635 ERROR 20659 --- [http-nio-8002-exec-2] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->t4z3r0w96reoyvvjeuy1q6exxh4rfp33，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 09:50:42.271 ERROR 20792 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->l4jzz3k344urpsdyjw891ajbublfdqgu，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:03:05.051 ERROR 21694 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->x2drhx06vne919l8y6w4m6j95b1x5vvq，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:05:17.461 ERROR 21866 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->n0egtu3h1n096vqwvl27he3c68gtaopk，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:05:17.461 ERROR 21866 --- [http-nio-8002-exec-3] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->tvsimrfl8dz2bkw6tk2lcqgvur3ijdot，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:05:17.461 ERROR 21866 --- [http-nio-8002-exec-2] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->2r5j398182gkbhiax4k8oj113r11mco2，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:08:43.178 ERROR 22405 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->ju2neipgo0uk1fhxff1qzodv9caj1e5f，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:11:45.563 ERROR 22656 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->w8ttjsar5w9xz516rz11ehl3d28vigvz，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:15:21.828 ERROR 22772 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->q1lkw0hlaq2hmry7ts6ura8p0uhsv25m，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！
+2020-08-22 10:17:09.078 ERROR 23200 --- [http-nio-8002-exec-1] c.s.guns.base.consts.ConstantsContext    : jwt密钥存在空值！常量名称：GUNS_JWT_SECRET，采用默认值：随机字符串->53tkhjjh90kbu7y4voh2gmzr7qnddkru，若想忽略此提示，请在开发管理->系统配置->参数配置，设置相关参数！

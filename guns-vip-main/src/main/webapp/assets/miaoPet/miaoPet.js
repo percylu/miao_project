@@ -22,13 +22,11 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {field: 'userId', sort: true, title: '所属用户'},
             {field: 'name', sort: true, title: '名字'},
             {field: 'type', sort: true, title: '品种'},
-            {field: 'sexy', sort: true, title: '性别'},
+            {field: 'sexy', sort: true, title: '性别',templet: '#sexyTpl'},
             {field: 'weight', sort: true, title: '重量'},
             {field: 'birthday', sort: true, title: '生日'},
             {field: 'rdid', sort: true, title: 'RFID'},
-            {field: 'imgurls', sort: true, title: '图片'},
             {field: 'createTime', sort: true, title: '创建时间'},
-            {field: 'updateTime', sort: true, title: '更新时间'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };

@@ -22,7 +22,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {field: 'userId', sort: true, title: '所属用户'},
             {field: 'deviceSn', sort: true, title: '设备编号'},
             {field: 'deviceType', sort: true, title: '设备型号'},
-            {field: 'status', sort: true, title: '状态'},
+            {field: 'status', sort: true, title: '状态',templet:"#statusTpl"},
             {field: 'rubbish', sort: true, title: '垃圾百分比'},
             {field: 'litter', sort: true, title: '猫砂百分比'},
             {field: 'tims', sort: true, title: '如厕次数'},

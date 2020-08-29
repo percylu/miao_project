@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.miao.mapper.MiaoCommonSettingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.miao.entity.MiaoCommonSetting">
+        <id column="setting_id" property="settingId" />
+        <result column="setting_title" property="settingTitle" />
+        <result column="setting_content" property="settingContent" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        setting_id AS "settingId", setting_title AS "settingTitle", setting_content AS "settingContent", update_time AS "updateTime", create_time AS "createTime"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.miao.model.result.MiaoCommonSettingResult" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoCommonSettingParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_common_setting where 1 = 1
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoCommonSettingParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_common_setting where 1 = 1
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.miao.model.result.MiaoCommonSettingResult" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoCommonSettingParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_common_setting where 1 = 1
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoCommonSettingParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_common_setting where 1 = 1
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+</mapper>

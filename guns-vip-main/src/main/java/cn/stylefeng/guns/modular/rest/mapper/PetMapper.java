@@ -17,7 +17,7 @@ import java.util.Map;
  * </p>
  *
  * @author percylu
- * @since 2020-08-03
+ * @since 2020-08-21
  */
 public interface PetMapper extends BaseMapper<Pet> {
 
@@ -25,7 +25,7 @@ public interface PetMapper extends BaseMapper<Pet> {
      * 获取列表
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     List<PetResult> customList(@Param("paramCondition") PetParam paramCondition);
 
@@ -33,7 +33,7 @@ public interface PetMapper extends BaseMapper<Pet> {
      * 获取map列表
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     List<Map<String, Object>> customMapList(@Param("paramCondition") PetParam paramCondition);
 
@@ -41,7 +41,7 @@ public interface PetMapper extends BaseMapper<Pet> {
      * 获取分页实体列表
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     Page<PetResult> customPageList(@Param("page") Page page, @Param("paramCondition") PetParam paramCondition);
 
@@ -49,7 +49,7 @@ public interface PetMapper extends BaseMapper<Pet> {
      * 获取分页map列表
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     Page<Map<String, Object>> customPageMapList(@Param("page") Page page, @Param("paramCondition") PetParam paramCondition);
 

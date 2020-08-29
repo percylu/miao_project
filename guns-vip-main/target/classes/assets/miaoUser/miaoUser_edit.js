@@ -60,8 +60,8 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
     //获取详情信息，填充表单
     var ajax = new $ax(Feng.ctxPath + "/miaoUser/detail?userId=" + Feng.getUrlParam("userId"));
     var result = ajax.start();
-    $('#avatarPreview').attr('src',result.data.avatar);
     form.val('miaoUserForm', result.data);
+    $('#avatarPreview').attr('src',result.data.avatar);
 
     //表单提交事件
     form.on('submit(btnSubmit)', function (data) {

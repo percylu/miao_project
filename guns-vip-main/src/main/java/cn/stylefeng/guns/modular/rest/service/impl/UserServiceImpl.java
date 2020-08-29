@@ -63,6 +63,16 @@ public class UserServiceImpl extends ServiceImpl<RestMiaoUserMapper, RestMiaoUse
         return new PageResult<>(page);
     }
 
+    @Override
+    public void updateByAccount(UserParam param) {
+        this.baseMapper.updateByAccount(param);
+    }
+
+    @Override
+    public void updateAccount(UserParam param) {
+        this.baseMapper.updateAccount(param);
+    }
+
     private Serializable getKey(UserParam param){
         return param.getUserId();
     }

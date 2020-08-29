@@ -1,0 +1,69 @@
+@layout("/common/_form.html",{js:["/assets/miaoArticle/miaoArticle_add.js"],css:["/assets/expand/module/formSelects/formSelects-v4.css"],plugins:["ue"]}){
+
+<form class="layui-form" id="miaoArticleForm" lay-filter="miaoArticleForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="articleId" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">文章标题<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="articleTitle" name="articleTitle" placeholder="请输入文章标题" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"> 文章封面<span style="color: red;">*</span></label>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn" id="articleCover_">上传图片</button>
+                            <input id="articleCover" hidden name="articleCover"  placeholder="请输入设备图片" type="text" />
+
+                            <div class="layui-upload-list">
+                                <img class="layui-upload-img" id="filePreview">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">文章来源<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <select name="articleFrom" lay-filter="articleFrom">
+                                <option value="">下拉单选框</option>
+                                <option value="原创" selected>原创</option>
+                                <option value="转载">转载</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">作者<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="articleEditor" name="articleEditor" value="喵总" placeholder="请输入作者" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">发布机构<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="articleCompany" name="articleCompany" placeholder="请输入发布机构" value="喵小小科技" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">文章内容<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <script id="container" name="articleContent" type="text/plain"></script>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.miao.mapper.MiaoArticleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.miao.entity.MiaoArticle">
+        <id column="article_id" property="articleId" />
+        <result column="article_title" property="articleTitle" />
+        <result column="article_cover" property="articleCover" />
+        <result column="article_content" property="articleContent" />
+        <result column="article_editor" property="articleEditor" />
+        <result column="article_from" property="articleFrom" />
+        <result column="article_company" property="articleCompany" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        article_id AS "articleId", article_title AS "articleTitle", article_cover AS "articleCover", article_content AS "articleContent", article_editor AS "articleEditor", article_from AS "articleFrom", article_company AS "articleCompany", update_time AS "updateTime", create_time AS "createTime"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.miao.model.result.MiaoArticleResult" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoArticleParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_article where 1 = 1
+            <if test="paramCondition.articleTitle != null and paramCondition.articleTitle != ''">
+                and article_title like CONCAT('%',#{paramCondition.articleTitle},'%')
+            </if>
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoArticleParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_article where 1 = 1
+            <if test="paramCondition.articleTitle != null and paramCondition.articleTitle != ''">
+                and article_title like CONCAT('%',#{paramCondition.articleTitle},'%')
+            </if>
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.miao.model.result.MiaoArticleResult" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoArticleParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_article where 1 = 1
+            <if test="paramCondition.articleTitle != null and paramCondition.articleTitle != ''">
+                and article_title like CONCAT('%',#{paramCondition.articleTitle},'%')
+            </if>
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.miao.model.params.MiaoArticleParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_article where 1 = 1
+            <if test="paramCondition.articleTitle != null and paramCondition.articleTitle != ''">
+                and article_title like CONCAT('%',#{paramCondition.articleTitle},'%')
+            </if>
+            <if test="paramCondition.createTime != null and paramCondition.createTime != ''">
+                and create_time like CONCAT('%',#{paramCondition.createTime},'%')
+            </if>
+    </select>
+
+</mapper>

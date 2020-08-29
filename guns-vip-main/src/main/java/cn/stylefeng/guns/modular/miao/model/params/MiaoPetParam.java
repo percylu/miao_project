@@ -2,6 +2,8 @@ package cn.stylefeng.guns.modular.miao.model.params;
 
 import lombok.Data;
 import cn.stylefeng.roses.kernel.model.validator.BaseValidatingParam;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -53,6 +55,7 @@ public class MiaoPetParam implements Serializable, BaseValidatingParam {
     /**
      * 生日
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     /**

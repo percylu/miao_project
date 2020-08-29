@@ -1,6 +1,7 @@
 package cn.stylefeng.guns.modular.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import cn.stylefeng.roses.kernel.model.page.PageResult;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
@@ -21,7 +22,7 @@ import java.util.List;
  * @Date 2020-08-03 14:25:08
  */
 @RestController
-@RequestMapping("/deviceType")
+@RequestMapping(value = "/deviceType",method = RequestMethod.POST)
 public class DeviceTypeController {
 
 
@@ -34,7 +35,7 @@ public class DeviceTypeController {
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/add")
+    @RequestMapping(value="/add",method = RequestMethod.POST)
     @ApiOperation("新增")
     public ResponseData add(@RequestBody DeviceTypeParam param) {
         deviceTypeService.add(param);
@@ -47,7 +48,7 @@ public class DeviceTypeController {
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/update")
+    @RequestMapping(value="/update",method = RequestMethod.POST)
     @ApiOperation("修改")
     public ResponseData update(@RequestBody DeviceTypeParam param) {
         deviceTypeService.update(param);
@@ -60,7 +61,7 @@ public class DeviceTypeController {
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/delete")
+    @RequestMapping(value="/delete",method = RequestMethod.POST)
     @ApiOperation("删除")
     public ResponseData delete(@RequestBody DeviceTypeParam param) {
         deviceTypeService.delete(param);
@@ -73,7 +74,7 @@ public class DeviceTypeController {
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/queryDetail")
+    @RequestMapping(value="/queryDetail",method = RequestMethod.POST)
     @ApiOperation(value = "查询详情", response = DeviceTypeResult.class)
     public ResponseData queryDetail(@RequestBody DeviceTypeParam param) {
         DeviceTypeResult result = deviceTypeService.findBySpec(param);
@@ -87,7 +88,7 @@ public class DeviceTypeController {
      * @Date 2020-08-03
      */
     @ApiOperation(value = "查询列表", response = DeviceTypeResult.class)
-    @RequestMapping(value="/queryList")
+    @RequestMapping(value="/queryList",method = RequestMethod.POST)
     public ResponseData queryList(@RequestBody DeviceTypeParam param) {
         List<DeviceTypeResult> listBySpec = deviceTypeService.findListBySpec(param);
         return ResponseData.success(listBySpec);
@@ -99,7 +100,7 @@ public class DeviceTypeController {
      * @author percylu
      * @Date 2020-08-03
      */
-    @RequestMapping(value="/queryListPage")
+    @RequestMapping(value="/queryListPage",method = RequestMethod.POST)
     @ApiOperation(value = "分页查询列表", response = DeviceTypeResult.class)
     public ResponseData queryListPage(@RequestBody DeviceTypeParam param) {
         PageResult<DeviceTypeResult> pageBySpec = deviceTypeService.findPageBySpec(param);

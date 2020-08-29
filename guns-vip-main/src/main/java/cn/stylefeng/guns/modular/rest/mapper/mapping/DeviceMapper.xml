@@ -21,6 +21,11 @@
         device_id AS "deviceId", user_id AS "userId", device_sn AS "deviceSn", device_type AS "deviceType", status AS "status", rubbish AS "rubbish", litter AS "litter", tims AS "tims", create_time AS "createTime", update_time AS "updateTime"
     </sql>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Join_Column_List">
+        device_id AS "deviceId", user_id AS "userId",color AS "color",type AS "type",imgurl AS "imgUrl",device_sn AS "deviceSn", rubbish AS "rubbish", litter AS "litter", tims AS "tims"
+    </sql>
+
 
     <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.DeviceResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.DeviceParam">
         select
@@ -30,8 +35,9 @@
 
     <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.DeviceParam">
         select
-        <include refid="Base_Column_List"/>
-        from miao_device where 1 = 1
+        <include refid="Join_Column_List"/>
+        from miao_device device left join miao_device_type type on device.device_type=type.type_id
+         where device.status=#{paramCondition.status} and device.user_id=#{paramCondition.userId};
     </select>
 
     <select id="customPageList" resultType="cn.stylefeng.guns.modular.rest.model.result.DeviceResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.DeviceParam">

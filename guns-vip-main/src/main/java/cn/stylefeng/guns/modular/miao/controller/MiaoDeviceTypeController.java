@@ -5,11 +5,17 @@ import cn.stylefeng.guns.modular.miao.entity.MiaoDeviceType;
 import cn.stylefeng.guns.modular.miao.model.params.MiaoDeviceTypeParam;
 import cn.stylefeng.guns.modular.miao.service.MiaoDeviceTypeService;
 import cn.stylefeng.roses.core.base.controller.BaseController;
+import cn.stylefeng.roses.core.util.ToolUtil;
+import cn.stylefeng.roses.kernel.model.exception.RequestEmptyException;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -123,6 +129,20 @@ public class MiaoDeviceTypeController extends BaseController {
     public LayuiPageInfo list(MiaoDeviceTypeParam miaoDeviceTypeParam) {
         return this.miaoDeviceTypeService.findPageBySpec(miaoDeviceTypeParam);
     }
+
+    @RequestMapping("/updatePic")
+    @ResponseBody
+    public ResponseData updatePic(@RequestParam("fileId") String fileId){
+        if (ToolUtil.isEmpty(fileId)){
+            throw new RequestEmptyException("请求图片为空");
+        }
+        String filePath=miaoDeviceTypeService.updatePic(fileId);
+        Map<String,String> map=new HashMap<>();
+        map.put("filePath",filePath);
+        return ResponseData.success(0, "上传成功", map);
+    }
+
+
 
 }
 

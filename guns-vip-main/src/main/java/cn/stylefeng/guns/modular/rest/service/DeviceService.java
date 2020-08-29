@@ -7,6 +7,7 @@ import cn.stylefeng.guns.modular.rest.model.result.DeviceResult;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -56,7 +57,7 @@ public interface DeviceService extends IService<Device> {
      * @author percylu
      * @Date 2020-08-03
      */
-    List<DeviceResult> findListBySpec(DeviceParam param);
+    List<Map<String,Object>> findListBySpec(DeviceParam param);
 
     /**
      * 查询分页数据，Specification模式
@@ -65,5 +66,13 @@ public interface DeviceService extends IService<Device> {
      * @Date 2020-08-03
      */
      PageResult<DeviceResult> findPageBySpec(DeviceParam param);
+
+     /**
+     * 查询单条数据，根据设备编码
+     *
+     * @author percylu
+     * @Date 2020-08-03
+     */
+     List<Device>  findbyDeviceSn(String deviceSn);
 
 }

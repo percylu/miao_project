@@ -22,9 +22,8 @@
                     </div>
                     <div class="layui-inline layui-col-md12">
                         <label class="layui-form-label">设备图片<span style="color: red;">*</span></label>
-                        <div class="layui-input-block">
-                            <input id="imgurl" name="imgurl" placeholder="请输入设备图片" type="text" class="layui-input" lay-verify="required" required/>
-                        </div>
+                            <input id="imgurl" hidden name="imgurl"  placeholder="请输入设备图片" type="text" />
+                            <img id="picPreview" style="cursor:pointer" >
                     </div>
                 </div>
             </div>
@@ -36,5 +35,11 @@
     </div>
 
 </form>
-
+<style>
+    img{
+        position: relative;
+        width: 100px;
+        height: 100px;
+    }
+</style>
 @}

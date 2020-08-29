@@ -7,6 +7,9 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 
 /**
@@ -62,6 +65,7 @@ public class MiaoPet implements Serializable {
      * 生日
      */
     @TableField("birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     /**
@@ -85,7 +89,7 @@ public class MiaoPet implements Serializable {
     /**
      * 更新时间
      */
-      @TableField(value = "update_time", fill = FieldFill.UPDATE)
+      @TableField(value = "update_time", fill = FieldFill.INSERT)
     private Date updateTime;
 
 

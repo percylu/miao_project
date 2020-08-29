@@ -54,8 +54,8 @@ spring:
   mvc:
     static-path-pattern: /image/**
   resources:
-    static-locations: file:E:/upload/
-#    static-locations: file:/Users/percylu/upload/
+    static-locations: file:/var/miao/upload
+    #static-locations: file:/Users/percylu/upload/
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

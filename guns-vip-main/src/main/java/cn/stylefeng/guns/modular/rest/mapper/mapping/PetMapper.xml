@@ -26,7 +26,7 @@
     <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.PetResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.PetParam">
         select
         <include refid="Base_Column_List"/>
-        from miao_pet where 1 = 1
+        from miao_pet where user_id = #{paramCondition.userId}  order by update_time desc
     </select>
 
     <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.PetParam">
@@ -44,7 +44,7 @@
     <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.PetParam">
         select
         <include refid="Base_Column_List"/>
-        from miao_pet where 1 = 1
+        from miao_pet where user_id = #{paramCondition.userId}
     </select>
 
 </mapper>

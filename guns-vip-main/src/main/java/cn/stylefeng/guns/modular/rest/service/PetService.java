@@ -1,5 +1,6 @@
 package cn.stylefeng.guns.modular.rest.service;
 
+import cn.stylefeng.guns.base.pojo.page.LayuiPageInfo;
 import cn.stylefeng.roses.kernel.model.page.PageResult;
 import cn.stylefeng.guns.modular.rest.entity.Pet;
 import cn.stylefeng.guns.modular.rest.model.params.PetParam;
@@ -14,7 +15,7 @@ import java.util.List;
  * </p>
  *
  * @author percylu
- * @since 2020-08-03
+ * @since 2020-08-21
  */
 public interface PetService extends IService<Pet> {
 
@@ -22,7 +23,7 @@ public interface PetService extends IService<Pet> {
      * 新增
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     void add(PetParam param);
 
@@ -30,7 +31,7 @@ public interface PetService extends IService<Pet> {
      * 删除
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     void delete(PetParam param);
 
@@ -38,23 +39,31 @@ public interface PetService extends IService<Pet> {
      * 更新
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     void update(PetParam param);
+
+    /**
+     * 更新时间，根据时间排序
+     *
+     * @author percylu
+     * @Date 2020-08-21
+     */
+    void updateDate(PetParam param);
 
     /**
      * 查询单条数据，Specification模式
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
-    PetResult findBySpec(PetParam param);
+    Pet findBySpec(PetParam param);
 
     /**
      * 查询列表，Specification模式
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
     List<PetResult> findListBySpec(PetParam param);
 
@@ -62,8 +71,8 @@ public interface PetService extends IService<Pet> {
      * 查询分页数据，Specification模式
      *
      * @author percylu
-     * @Date 2020-08-03
+     * @Date 2020-08-21
      */
-     PageResult<PetResult> findPageBySpec(PetParam param);
+    LayuiPageInfo findPageBySpec(PetParam param);
 
 }

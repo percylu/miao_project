@@ -25,7 +25,8 @@ import static cn.stylefeng.guns.sys.core.exception.enums.BizExceptionEnum.*;
  */
 @Slf4j
 public class UeditorUtil {
-
+    //private static String website="http://192.168.3.25:8002";
+    private static String website="http://39.108.96.5:8002";
     /**
      * ue上传文件逻辑
      *
@@ -161,7 +162,7 @@ public class UeditorUtil {
      */
     private static String getImageRelativeUrl(String imageName) {
         String contextPath = ConfigListener.getConf().get("contextPath");
-        return contextPath + "/ueditor/images/" + imageName;
+        return website+contextPath + "/ueditor/images/" + imageName;
     }
 
     /**
@@ -172,7 +173,7 @@ public class UeditorUtil {
      */
     private static String getFileRelativeUrl(String imageName) {
         String contextPath = ConfigListener.getConf().get("contextPath");
-        return contextPath + "/ueditor/file/" + imageName;
+        return website+contextPath + "/ueditor/file/" + imageName;
     }
 
     /**
@@ -183,7 +184,7 @@ public class UeditorUtil {
      */
     private static String getVideoRelativeUrl(String imageName) {
         String contextPath = ConfigListener.getConf().get("contextPath");
-        return contextPath + "/ueditor/video/" + imageName;
+        return website+contextPath + "/ueditor/video/" + imageName;
     }
 
     /**

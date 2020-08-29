@@ -38,7 +38,13 @@ layui.use(['form', 'admin', 'ax','laydate','upload','formSelects'], function () 
 
 
 
-
+    //下拉多选框
+    var formSelects = layui.formSelects;
+    formSelects.config('seldeviceType', {
+        searchUrl: Feng.ctxPath + "/miaoDeviceType/list",//请更换成您自己的url,可参考项目中的其他接口
+        keyName: 'type',//更换成自己的keyName,可参考项目中的其他接口
+        keyVal: 'typeId'//更换成自己的keyVal,可参考项目中的其他接口
+    });
 
 
 

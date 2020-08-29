@@ -65,5 +65,12 @@ public interface MiaoPetService extends IService<MiaoPet> {
      * @Date 2020-07-31
      */
      LayuiPageInfo findPageBySpec(MiaoPetParam param);
+    /**
+     * 上传宠物图片
+     *
+     * @author 卢水柏
+     * @Date 2020-07-31
+     */
+    String updatePic(String fileId);
 
 }
