@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.rest.mapper.ThirdMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.rest.entity.Third">
+        <id column="third_id" property="thirdId" />
+        <result column="user_id" property="userId" />
+        <result column="jpush_reg_id" property="jpushRegId" />
+        <result column="mob_reg_id" property="mobRegId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        third_id AS "thirdId", user_id AS "userId", jpush_reg_id AS "jpushRegId", mob_reg_id AS "mobRegId"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.ThirdResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.ThirdParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_third where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.ThirdParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_third where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.rest.model.result.ThirdResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.ThirdParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_third where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.ThirdParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_third where 1 = 1
+    </select>
+
+</mapper>
