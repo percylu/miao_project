@@ -2,6 +2,8 @@ package cn.stylefeng.guns.modular.miao.controller;
 
 import cn.stylefeng.guns.base.pojo.page.LayuiPageFactory;
 import cn.stylefeng.guns.base.pojo.page.LayuiPageInfo;
+import cn.stylefeng.guns.modular.jpush.model.PushBean;
+import cn.stylefeng.guns.modular.jpush.service.JiGuangPushService;
 import cn.stylefeng.guns.modular.miao.entity.MiaoNotice;
 import cn.stylefeng.guns.modular.miao.model.params.MiaoNoticeParam;
 import cn.stylefeng.guns.modular.miao.service.MiaoNoticeService;
@@ -31,7 +33,8 @@ public class MiaoNoticeController extends BaseController {
 
     @Autowired
     private MiaoNoticeService miaoNoticeService;
-
+    @Autowired
+    JiGuangPushService jiGuangPushService;
     /**
      * 跳转到主页面
      *
@@ -75,6 +78,11 @@ public class MiaoNoticeController extends BaseController {
     @ResponseBody
     public ResponseData addItem(MiaoNoticeParam miaoNoticeParam) {
         this.miaoNoticeService.add(miaoNoticeParam);
+        PushBean pushBean = new PushBean();
+        pushBean.setTitle(miaoNoticeParam.getTitle());
+        pushBean.setAlert(miaoNoticeParam.getContent());
+        jiGuangPushService.pushAndroid(pushBean);
+        jiGuangPushService.pushIos(pushBean);
         return ResponseData.success();
     }
 

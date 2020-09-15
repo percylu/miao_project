@@ -1,4 +1,4 @@
-package cn.stylefeng.guns.modular.jpush;
+package cn.stylefeng.guns.modular.jpush.config;
 
 import cn.jpush.api.JPushClient;
 import org.springframework.beans.factory.annotation.Value;

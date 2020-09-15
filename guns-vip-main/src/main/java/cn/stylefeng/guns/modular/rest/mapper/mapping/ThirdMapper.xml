@@ -19,7 +19,7 @@
     <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.ThirdResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.ThirdParam">
         select
         <include refid="Base_Column_List"/>
-        from miao_third where 1 = 1
+        from miao_third where user_id=#{paramCondition.userId}
     </select>
 
     <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.ThirdParam">

@@ -38,12 +38,12 @@ public class ThirdResult implements Serializable {
      * 极光推送ID
      */
     @ApiModelProperty("极光推送ID")
-    private Long jpushRegId;
+    private String jpushRegId;
 
     /**
      * MobID
      */
     @ApiModelProperty("MobID")
-    private Long mobRegId;
+    private String mobRegId;
 
 }

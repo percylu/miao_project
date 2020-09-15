@@ -35,13 +35,13 @@ public class Third implements Serializable {
      * 极光推送ID
      */
     @TableField("jpush_reg_id")
-    private Long jpushRegId;
+    private String jpushRegId;
 
     /**
      * MobID
      */
     @TableField("mob_reg_id")
-    private Long mobRegId;
+    private String mobRegId;
 
 
     public Long getThirdId() {
@@ -60,19 +60,19 @@ public class Third implements Serializable {
         this.userId = userId;
     }
 
-    public Long getJpushRegId() {
+    public String getJpushRegId() {
         return jpushRegId;
     }
 
-    public void setJpushRegId(Long jpushRegId) {
+    public void setJpushRegId(String jpushRegId) {
         this.jpushRegId = jpushRegId;
     }
 
-    public Long getMobRegId() {
+    public String getMobRegId() {
         return mobRegId;
     }
 
-    public void setMobRegId(Long mobRegId) {
+    public void setMobRegId(String mobRegId) {
         this.mobRegId = mobRegId;
     }
 

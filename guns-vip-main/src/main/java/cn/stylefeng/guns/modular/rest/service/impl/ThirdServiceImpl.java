@@ -48,6 +48,10 @@ public class ThirdServiceImpl extends ServiceImpl<ThirdMapper, Third> implements
 
     @Override
     public ThirdResult findBySpec(ThirdParam param){
+        List<ThirdResult> list=this.baseMapper.customList(param);
+        if(list.size()>0){
+            return list.get(0);
+        }
         return null;
     }
 
