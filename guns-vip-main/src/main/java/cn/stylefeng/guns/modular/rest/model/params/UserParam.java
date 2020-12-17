@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Data
 @ApiModel
-public class UserParam implements Serializable, BaseValidatingParam {
+public class    UserParam implements Serializable, BaseValidatingParam {
 
     private static final long serialVersionUID = 1L;
 
@@ -88,6 +88,12 @@ public class UserParam implements Serializable, BaseValidatingParam {
      */
     @ApiModelProperty("微博")
     private String weibo;
+
+    /**
+     * 苹果
+     */
+    @ApiModelProperty("苹果")
+    private String apple;
 
     /**
      * 创建时间

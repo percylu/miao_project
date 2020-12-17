@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.rest.mapper.FollowListMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.rest.entity.FollowList">
+        <id column="follow_id" property="followId" />
+        <result column="user_id" property="userId" />
+        <result column="follow_user_id" property="followUserId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        follow_id AS "followId", user_id AS "userId", follow_user_id AS "followUserId", create_time AS "createTime"
+    </sql>
+
+
+    <select id="customList" resultType="cn.stylefeng.guns.modular.rest.model.result.FollowListResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.FollowListParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_follow_list where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.FollowListParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_follow_list where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="cn.stylefeng.guns.modular.rest.model.result.FollowListResult" parameterType="cn.stylefeng.guns.modular.rest.model.params.FollowListParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_follow_list where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="cn.stylefeng.guns.modular.rest.model.params.FollowListParam">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_follow_list where 1 = 1
+    </select>
+
+</mapper>

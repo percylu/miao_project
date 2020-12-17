@@ -1,0 +1,85 @@
+@layout("/common/_form.html",{js:["/assets/miaoPost/miaoPost_edit.js"]}){
+
+<form class="layui-form" id="miaoPostForm" lay-filter="miaoPostForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="postId" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">动态标题<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="title" name="title" placeholder="请输入动态标题" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">关联话题</label>
+                        <div class="layui-input-block">
+                            <input id="topicId" name="topicId" placeholder="请输入关联话题" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">用户<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="userId" name="userId" placeholder="请输入用户" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">动态图片<span style="color: red;">*</span></label>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn" id="file">上传图片</button>
+                            <div class="layui-upload-list">
+                                <img class="layui-upload-img" id="filePreview">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">城市</label>
+                        <div class="layui-input-block">
+                            <input id="city" name="city" placeholder="请输入城市" type="text" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">详细位置</label>
+                        <div class="layui-input-block">
+                            <input id="location" name="location" placeholder="请输入详细位置" type="text" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">点赞数量</label>
+                        <div class="layui-input-block">
+                            <input id="likeCount" name="likeCount" placeholder="请输入点赞数量" type="text" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">综合热度</label>
+                        <div class="layui-input-block">
+                            <input id="hotCount" name="hotCount" placeholder="请输入综合热度" type="text" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">评论次数</label>
+                        <div class="layui-input-block">
+                            <input id="commentCount" name="commentCount" placeholder="请输入评论次数" type="text" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">排序（0最小）</label>
+                        <div class="layui-input-block">
+                            <input id="seq" name="seq" placeholder="请输入排序（0最小）" type="text" class="layui-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

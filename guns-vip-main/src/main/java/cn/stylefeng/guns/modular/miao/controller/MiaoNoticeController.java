@@ -79,8 +79,16 @@ public class MiaoNoticeController extends BaseController {
     public ResponseData addItem(MiaoNoticeParam miaoNoticeParam) {
         this.miaoNoticeService.add(miaoNoticeParam);
         PushBean pushBean = new PushBean();
-        pushBean.setTitle(miaoNoticeParam.getTitle());
-        pushBean.setAlert(miaoNoticeParam.getContent());
+        if(miaoNoticeParam.getType()=="SYS"){
+            pushBean.setTitle("系统消息");
+        }
+        if(miaoNoticeParam.getType()=="DEVICE"){
+            pushBean.setTitle("故障消息");
+        }
+        if(miaoNoticeParam.getType()=="PUSH"){
+            pushBean.setTitle("推送消息");
+        }
+        pushBean.setAlert(miaoNoticeParam.getTitle());
         jiGuangPushService.pushAndroid(pushBean);
         jiGuangPushService.pushIos(pushBean);
         return ResponseData.success();

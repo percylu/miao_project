@@ -54,6 +54,26 @@
         <include refid="Base_Column_List"/>
         from miao_user where account = #{account}
     </select>
+    <select id="getByQq" resultType="cn.stylefeng.guns.modular.rest.entity.RestMiaoUser">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where qq = #{qq}
+    </select>
+    <select id="getByWeibo" resultType="cn.stylefeng.guns.modular.rest.entity.RestMiaoUser">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where weibo = #{weibo}
+    </select>
+    <select id="getByWeixin" resultType="cn.stylefeng.guns.modular.rest.entity.RestMiaoUser">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where weixin = #{weixin}
+    </select>
+    <select id="getByApple" resultType="cn.stylefeng.guns.modular.rest.entity.RestMiaoUser">
+        select
+        <include refid="Base_Column_List"/>
+        from miao_user where apple = #{apple}
+    </select>
 
     <update id="updateByAccount" parameterType="cn.stylefeng.guns.modular.rest.model.params.UserParam">
         update miao_user set salt=#{paramCondition.salt}, password=#{paramCondition.password}
@@ -62,6 +82,10 @@
 
     <update id="updateAccount" parameterType="cn.stylefeng.guns.modular.rest.model.params.UserParam">
         update miao_user set account=#{paramCondition.account}
+        where user_id=#{paramCondition.userId}
+    </update>
+    <update id="updateSns" parameterType="cn.stylefeng.guns.modular.rest.model.params.UserParam">
+        update miao_user set qq=#{paramCondition.qq},weixin=#{paramCondition.weixin},weibo=#{paramCondition.weibo},apple=#{paramCondition.apple}
         where user_id=#{paramCondition.userId}
     </update>
 </mapper>

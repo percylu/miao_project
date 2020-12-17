@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoArticle/miaoArticle_add.html" value="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoArticle" />
+        <entry key="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoDeviceType/miaoDeviceType_add.html" value="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoDeviceType" />
         <entry key="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoNotice/miaoNotice_add.html" value="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoNotice" />
         <entry key="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoPet/miaoPet.html" value="file://$PROJECT_DIR$/guns-vip-main/src/main/webapp/pages/miaoPet" />
       </map>

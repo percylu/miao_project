@@ -1,0 +1,9 @@
+2020-10-26 00:06:16.097  INFO 6096 --- [Thread-28] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2020-10-26 00:06:16.119  INFO 6096 --- [Thread-28] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2020-10-26 00:06:16.120  INFO 6096 --- [Thread-28] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2020-10-26 00:06:16.120  INFO 6096 --- [Thread-28] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2020-10-26 00:06:16.123  INFO 6096 --- [Thread-28] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2020-10-26 00:06:16.294  INFO 6096 --- [Thread-28] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-26 00:06:16.317  INFO 6096 --- [Thread-28] c.a.icatch.imp.TransactionServiceImp     : Transaction Service: Entering shutdown (false, 9223372036854775807)...
+2020-10-26 00:06:16.355  INFO 6096 --- [Thread-28] c.a.datasource.pool.ConnectionPool       : atomikos connection pool 'master': destroying pool...
+2020-10-26 00:06:16.355  WARN 6096 --- [Thread-28] c.a.datasource.pool.ConnectionPool       : atomikos connection pool 'master': connection is still in use on pool destroy: an AtomikosXAPooledConnection with a SessionHandleState with 1 context(s) - please check your shutdown sequence to avoid heuristic termination of ongoing transactions!

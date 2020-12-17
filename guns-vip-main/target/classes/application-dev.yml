@@ -40,6 +40,9 @@ aliyun:
     accessKeyId: "LTAI4GD597QueQH7yF3whorg"
     accessKeySecret: "R5dNjhK8UQTBcPbv9tH7FHEM9NUWL7"
     signName: "喵小小科技"
+push:
+  appkey: "979597f2608ac5ec9047909b"
+  secret: "b7bb6e88e2d292fb2e1a108c"
 spring:
   redis:
     database: 0
@@ -62,6 +65,7 @@ spring:
     url: jdbc:mysql://123.207.51.155:3307/miaotest?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: Lu137849s
+
     filters: wall,mergeStat
 
     # 连接池大小根据实际情况调整

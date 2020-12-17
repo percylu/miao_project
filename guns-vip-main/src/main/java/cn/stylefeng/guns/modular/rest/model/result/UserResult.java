@@ -89,6 +89,11 @@ public class UserResult implements Serializable {
     private String weibo;
 
     /**
+     * 微博
+     */
+    @ApiModelProperty("苹果")
+    private String apple;
+    /**
      * 创建时间
      */
     @ApiModelProperty(hidden = true)

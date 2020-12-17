@@ -40,6 +40,9 @@ aliyun:
     accessKeyId: "LTAI4GD597QueQH7yF3whorg"
     accessKeySecret: "R5dNjhK8UQTBcPbv9tH7FHEM9NUWL7"
     signName: "喵小小科技"
+push:
+  appkey: "979597f2608ac5ec9047909b"
+  secret: "b7bb6e88e2d292fb2e1a108c"
 spring:
   redis:
     database: 0

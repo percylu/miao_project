@@ -18,7 +18,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     MiaoArticle.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'articleId', hide: true, title: '主键ID'},
+            {field: 'articleId', hide: false, title: '主键ID'},
             {field: 'articleTitle', sort: true, title: '文章标题'},
             {field: 'articleEditor', sort: true, title: '作者'},
             {field: 'articleFrom', sort: true, title: '文章来源'},

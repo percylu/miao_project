@@ -1,0 +1,76 @@
+@layout("/common/_form.html",{js:["/assets/miaoProduct/miaoProduct_edit.js"]}){
+
+<form class="layui-form" id="miaoProductForm" lay-filter="miaoProductForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="productId" type="hidden"/>
+
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">商品名称<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="name" name="name" placeholder="请输入商品名称" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">商品原价<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="originalPrice" name="originalPrice" placeholder="请输入商品原价" type="number" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">销售价格<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="salePrice" name="salePrice" placeholder="请输入销售价格" type="number" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">首页促销<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <select name="promotion" lay-filter="promotion">
+                                <option value="">下拉单选框</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">商品图片<span style="color: red;">*</span></label>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn" id="img">上传图片</button>
+                            <div class="layui-upload-list">
+                                <img class="layui-upload-img" id="filePreview">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">平台来源<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <select name="platform" lay-filter="platform">
+                                <option value="">下拉单选框</option>
+                                <option value="京东">京东</option>
+                                <option value="天猫">天猫</option>
+                                <option value="淘宝">淘宝</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">跳转链接<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="link" name="link" placeholder="请输入跳转链接" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

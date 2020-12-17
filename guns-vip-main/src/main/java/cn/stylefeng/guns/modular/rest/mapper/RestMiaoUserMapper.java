@@ -56,7 +56,24 @@ public interface RestMiaoUserMapper extends BaseMapper<RestMiaoUser> {
      * 通过账号获取用户
      */
     RestMiaoUser getByAccount(@Param("account") String account);
+    /**
+     * 通过qq获取用户
+     */
+    RestMiaoUser getByQq(@Param("qq") String qq);
+    /**
+     * 通过weibo获取用户
+     */
+    RestMiaoUser getByWeibo(@Param("weibo") String weibo);
+    /**
+     * 通过wechat获取用户
+     */
 
+    RestMiaoUser getByWeixin(@Param("weixin") String weixin);
+    /**
+     * 通过apple id获取用户
+     */
+
+    RestMiaoUser getByApple(@Param("apple") String apple);
     /**
      * 根据账号更新密码
      */
@@ -66,6 +83,10 @@ public interface RestMiaoUserMapper extends BaseMapper<RestMiaoUser> {
      * 修改手机号
      */
     void updateAccount(@Param("paramCondition") UserParam paramCondition);
+    /**
+     * 修改第三方登陆信息
+     */
+    void updateSns(@Param("paramCondition") UserParam paramCondition);
     }
 
 

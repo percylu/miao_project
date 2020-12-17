@@ -16,6 +16,7 @@ import cn.stylefeng.roses.kernel.model.exception.ServiceException;
 import cn.stylefeng.roses.kernel.model.response.ErrorResponseData;
 import cn.stylefeng.roses.kernel.model.response.SuccessResponseData;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -79,6 +80,46 @@ public class UserController {
         result.put("user", MiaoUserFactory.getMiaoUser(user));
         return new SuccessResponseData(201,"",result);
     }
+    /**
+     * 第三方登陆账号验证
+     *
+     * @author percylu
+     * @Date 2020/11/21 10:36 PM
+     */
+    @RequestMapping(value = "/thirdauth", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation("第三方登陆")
+    public ResponseData thirdAuth(@RequestParam("authuser") String authuser,
+                                  @RequestParam("platform") String platform) {
+
+        RestMiaoUser user=null;
+        switch (platform){
+            case "qq":
+                user=userMapper.getByQq(authuser);
+                break;
+            case "weibo":
+                user=userMapper.getByWeibo(authuser);
+                break;
+            case "weixin":
+                user=userMapper.getByWeixin(authuser);
+                break;
+            case "apple":
+                user=userMapper.getByApple(authuser);
+                break;
+        }
+        if(user instanceof RestMiaoUser) {
+
+            //登录并创建token
+            String token = authService.login(user.getAccount());
+
+            Map<String, Object> result = new HashMap<>();
+            result.put("token", token);
+            result.put("user", MiaoUserFactory.getMiaoUser(user));
+            return new SuccessResponseData(201, "", result);
+        }
+        //还没有绑定用户
+        return new SuccessResponseData(202,"","");
+    }
 
     /**
      * 点击登录执行的动作
@@ -104,8 +145,7 @@ public class UserController {
     public ResponseData add(@RequestBody UserParam param) {
         // 完善账号信息
         String _password= param.getPassword();
-        UserParam parm = new UserParam();
-        parm.setAccount(param.getAccount());
+
         RestMiaoUser user=userMapper.getByAccount(param.getAccount());
         if(user !=null){
             throw new ServiceException(BizExceptionEnum.USER_ALREADY_REG);
@@ -124,7 +164,7 @@ public class UserController {
         return new SuccessResponseData(201,"",result);
     }
     /**
-     * 点击登录执行的动作
+     * 点击获取验证码
      *
      * @author fengshuonan
      * @Date 2018/12/23 5:42 PM
@@ -149,6 +189,101 @@ public class UserController {
                 .phoneNumbers(phones)
                 .build();
         smsClient.send(smsTemplate);
+        return new SuccessResponseData();
+    }
+    /**
+     * 点击获取验证码
+     *
+     * @author percylu
+     * @Date 2020/11/22 5:42 PM
+     */
+    @RequestMapping(value = "/getAuthCode", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation("第三方注册验证码")
+    public ResponseData getAuthCode(@RequestParam("username") String username,HttpSession httpSession) {
+        String verifyCode = String
+                .valueOf(new Random().nextInt(899999) + 100000);//生成短信验证码
+//        RestMiaoUser user=userMapper.getByAccount(username);
+//        if(user !=null){
+//            //如果账号已经存在，直接登陆
+//            //登录并创建token
+//            String token = authService.login(user.getAccount());
+//
+//            Map<String, Object> result = new HashMap<>();
+//            result.put("token", token);
+//            result.put("user", MiaoUserFactory.getMiaoUser(user));
+//            return new SuccessResponseData(201, "", result);
+//        }
+        template.boundValueOps("Register"+username).set(verifyCode);
+        List<String> phones= new ArrayList();
+        phones.add(username);
+        SmsTemplate smsTemplate = SmsTemplate.builder()
+                .templateCode(StaticUtil.registerTemplates)
+                .addTemplateParam("code", verifyCode)
+                .signName("喵小小科技")
+                .phoneNumbers(phones)
+                .build();
+        smsClient.send(smsTemplate);
+        return new SuccessResponseData();
+    }
+
+    /**
+     * 点击登录执行的动作
+     *
+     * @author fengshuonan
+     * @Date 2018/12/23 5:42 PM
+     */
+    @RequestMapping(value = "/codeAuthVerify", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation("第三方注册验证注册验证码")
+    public ResponseData codeAuthVerify(@RequestParam("username") String username,@RequestParam("code") String code,@RequestParam("type") String type,@RequestParam("authuser") String authuser,HttpSession httpSession) {
+        RestMiaoUser user=userMapper.getByAccount(username);
+
+        String jcode = (String) template.boundValueOps("Register"+username).get();
+        if(jcode==null){
+            return ResponseData.error("手机号码错误！");
+        }
+        if(!jcode.contentEquals(code)){
+            return ResponseData.error("验证码错误，请重试！");
+        }
+        if(user !=null){
+            //如果账号已经存在，直接登陆
+            //登录并创建token
+            String token = authService.login(user.getAccount());
+            UserParam param=new UserParam();
+            param.setUserId(user.getUserId());
+            switch (type){
+                case "qq":
+                    param.setQq(authuser);
+                    param.setWeibo(user.getWeibo());
+                    param.setWeixin(user.getWeixin());
+                    param.setApple(user.getApple());
+                    break;
+                case "weibo":
+                    param.setWeibo(authuser);
+                    param.setQq(user.getQq());
+                    param.setWeixin(user.getWeixin());
+                    param.setApple(user.getApple());
+                    break;
+                case "weixin":
+                    param.setWeixin(authuser);
+                    param.setWeibo(user.getWeibo());
+                    param.setQq(user.getQq());
+                    param.setApple(user.getApple());
+                    break;
+                case "apple":
+                    param.setApple(authuser);
+                    param.setWeibo(user.getWeibo());
+                    param.setQq(user.getQq());
+                    param.setWeixin(user.getWeixin());
+                    break;
+            }
+            userMapper.updateSns(param);
+            Map<String, Object> result = new HashMap<>();
+            result.put("token", token);
+            result.put("user", MiaoUserFactory.getMiaoUser(user));
+            return new SuccessResponseData(201, "", result);
+        }
         return new SuccessResponseData();
     }
     /**

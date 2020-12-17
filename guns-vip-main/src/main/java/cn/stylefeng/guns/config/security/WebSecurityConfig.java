@@ -86,6 +86,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         HttpMethod.POST,
                         "/login",
+                        "/user/thirdauth",
+                        "/user/getAuthCode",
+                        "/user/codeAuthVerify",
                         "/user/login",
                         "/user/add",
                         "/user/verifyCode",

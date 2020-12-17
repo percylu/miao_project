@@ -88,6 +88,12 @@ public class RestMiaoUser implements Serializable {
     private String weibo;
 
     /**
+     * 苹果
+     */
+    @TableField("apple")
+    private String apple;
+
+    /**
      * 创建时间
      */
       @TableField(value = "create_time", fill = FieldFill.INSERT)
@@ -171,6 +177,15 @@ public class RestMiaoUser implements Serializable {
     public void setQq(String qq) {
         this.qq = qq;
     }
+
+    public String getApple() {
+        return apple;
+    }
+
+    public void setApple(String apple) {
+        this.apple = apple;
+    }
+
 
     public String getWeixin() {
         return weixin;

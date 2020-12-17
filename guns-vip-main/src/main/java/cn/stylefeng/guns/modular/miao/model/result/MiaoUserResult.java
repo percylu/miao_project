@@ -75,6 +75,11 @@ public class MiaoUserResult implements Serializable {
     private String weibo;
 
     /**
+     * 苹果
+     */
+    private String apple;
+
+    /**
      * 创建时间
      */
     private Date createTime;
